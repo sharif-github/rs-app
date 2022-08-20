@@ -43,4 +43,24 @@
     </div>
   </div>
 </div>
+<script src="{{ asset('app_assets/js/sweetalert2.all.min.js') }}"></script>
+<!-- End of Footer -->
+<script>
+    $(document).ready(function() {
+        @if(session('success'))
+        Swal.fire({
+        icon: 'success',
+        title: 'Successful &#11088;',
+        text: '{{ session('success') }}',
+        })
+        @endif
+        @if(session('error'))
+        Swal.fire({
+        icon: 'error',
+        title: 'Sorry.... &#10071',
+        text: '{{ session('error') }}',
+        })
+        @endif
+});
+</script>
 </html>

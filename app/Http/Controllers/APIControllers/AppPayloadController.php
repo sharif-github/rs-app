@@ -6,6 +6,7 @@ use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\APIUser;
 use App\Models\CitiesTable;
+use App\Models\VehicleType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -257,6 +258,65 @@ class AppPayloadController extends Controller
                     ], 403);
                 }
             }else{
+                return response()->json([
+                    'Status' => 'Access forbidden',
+                    'Message' => 'You are not allowed to access',
+                    'Error' => 'Credentials Missing',
+                ], 403);
+            }
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return response([
+                'Status' => 'Unprocessable Entity',
+                'Error' => $error,
+            ], 422);
+        }
+    }
+
+
+    /**Store vahicle type */
+    public function StoreVehicleType(Request $request){
+        try {
+            $header_user = $request->header('user');
+            $header_token = $request->header('token');
+            $verify_author = Helpers::VerifyTokenRoot($header_user, $header_token);
+            if ($verify_author === 'Accepted') {
+                $validator = Validator::make($request->all(), [
+                    'type' => 'required|max:255',
+                    'minimum_seat' => 'required|max:255',
+                    'maximum_seat' => 'required|max:255',
+                ]);
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status' => 'Bad request',
+                        'error_message' => $validator->messages(),
+                    ], 400);
+                } else {
+                    $start = microtime(true);
+                    $type = strtoupper($request->type);
+                    VehicleType::insert([
+                        'type' => $type,
+                        'created_at' => Carbon::now()
+                    ]);
+                    $data_details = collect();
+                    $data_fetch = DB::table('vehicle_types')
+                    ->get();
+                    foreach ($data_fetch as $data) {
+                        $data_details->push([
+                            'type' => $data->type,
+                            'minimum_seat' => $data->minimum_seat,
+                            'maximum_seat' => $data->maximum_seat,
+                        ]);
+                    }
+                    $last_time = microtime(true);
+                    $execution_time = ($last_time - $start) * 1000000 . ' second';
+                    return response()->json([
+                        'status' => 'Accepted',
+                        'response_data_details' => $data_details,
+                        'execution_time' => $execution_time
+                    ], 200);
+                }
+            } else {
                 return response()->json([
                     'Status' => 'Access forbidden',
                     'Message' => 'You are not allowed to access',

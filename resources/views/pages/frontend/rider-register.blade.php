@@ -17,14 +17,14 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="first_name" name="first_name"
-                                            placeholder="First Name">
+                                            placeholder="First Name" value="{{ old('first_name') }}">
                                         @error('first_name')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="last_name" name="last_name"
-                                            placeholder="Last Name">
+                                            placeholder="Last Name" value="{{ old('last_name') }}">
                                         @error('last_name')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -32,8 +32,29 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email" name="email"
-                                        placeholder="Email Address">
+                                        placeholder="Email Address" value="{{ old('email') }}">
                                      @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="nid" name="nid"
+                                        placeholder="National ID Serial" value="{{ old('nid') }}">
+                                     @error('nid')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control form-control-user" id="contact" name="contact"
+                                        placeholder="Contact number" value="{{ old('contact') }}">
+                                     @error('contact')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="adreess" name="adreess"
+                                        placeholder="Address" value="{{ old('adreess') }}">
+                                     @error('adreess')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

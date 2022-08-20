@@ -16,9 +16,13 @@
 
     <!-- Custom styles -->
     <link href="{{ asset('app_assets/css/sb-admin-2.min.css') }}"  rel="stylesheet">
+      <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <!--Ajax connection-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script rel="stylesheet" href="{{ asset('app_assets/js/jquery.min.js') }}"></script>
+     <link href="{{ asset('app_assets/css/sweetalert2.min.css') }}"" rel="stylesheet">
 
 
 </head>
