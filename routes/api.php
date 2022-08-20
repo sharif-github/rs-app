@@ -26,5 +26,6 @@ use Illuminate\Support\Facades\Route;
     Route::prefix('/admin')->group(function(){
         Route::post('/generate/api/user',[AppPayloadController::class,'GenerateApiUser']);
         Route::post('/store/cities', [AppPayloadController::class, 'StoreCities']);
+        Route::post('/store/vehicle/type', [AppPayloadController::class, 'StoreVehicleType']);
     });
  });

@@ -71,7 +71,7 @@
             </div> --}}
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+   {{--          <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -86,13 +86,13 @@
                         <a class="collapse-item" href="{{ route('vehicle.registrationPanel') }}">Vehicle Registration</a>
                         @elseif($user_status === 'User')
                         @endif
-                        {{-- <div class="collapse-divider"></div>
+                        <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
                         <a class="collapse-item active" href="blank.html">Blank Page</a>
-                    </div> --}}
+                    </div>
                 </div>
-            </li>
+            </li> --}}
 
             <!-- Nav Item - Charts -->
     {{-- <li class="nav-item">
